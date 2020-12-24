@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\crudapplication",
+    "\\crudapplication\\migrations\\__pycache__",
+    "\\crudapplication\\templates",
+    "\\crudapplication\\__pycache__",
+    "\\webapplication",
+    "\\webapplication\\__pycache__"
+  ],
+  "SelectedNode": "\\crudapplication\\templates\\show.html",
+  "PreviewInSolutionExplorer": false
+}

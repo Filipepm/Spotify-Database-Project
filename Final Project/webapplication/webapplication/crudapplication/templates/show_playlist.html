@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Playlist Records</title>
+     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/style.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Playlist Name</th>
+        <th>User Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for playlist in playlists %}
+    <tr>
+        <td>{{ playlist.playlistName }}</td>
+        <td>{{ playlist.userName }}</td>
+        <td>
+            <a href="/editPlaylist/{{ playlist.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/deletePlaylist/{{ playlist.id }}">Delete</a>
+        </td>
+    </tr> 
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/playlistt" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>

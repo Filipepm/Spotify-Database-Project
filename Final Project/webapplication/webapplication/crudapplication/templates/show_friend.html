@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Records</title>
+     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/style.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>User Name</th>
+        <th>Friend Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for friend in friends %}
+    <tr>
+        <td>{{ friend.userName }}</td>
+        <td>{{ friend.friendName }}</td>
+        <td>
+            <a href="/editFriend/{{ friend.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/deleteFriend/{{ friend.id }}">Delete</a>
+        </td>
+    </tr> 
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/friendd" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>

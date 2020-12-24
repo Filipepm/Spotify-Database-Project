@@ -1,0 +1,91 @@
+--TODO 
+--ADD Friends Table
+--REMAKE USER TABLE Drop Friends column from user
+--Make playlist duration a derived field
+
+
+
+--AWS Login: admin - 1234abcd
+--CMSC508-GROUP-12
+
+--THINGS THAT NEED ORDER WHEN CREATED, REVERSE ORDER WHEN DELETING
+--1. users can be made whenever
+--2. playlists need users
+--3. userPlaylists need users and playlists
+
+--1. Artists can be created whenever
+--2. Albums require Artists
+--3. Songs require Album and Artists
+
+
+CREATE TABLE Artist(
+	artistName varchar(25),
+	genreName varchar(25),
+	description varchar(100),
+	PRIMARY KEY (artistName)
+);
+
+CREATE TABLE Album(
+	albumTitle varchar(25),
+	artistName varchar(25),
+	year NUMERIC(4,0),
+	PRIMARY KEY (albumTitle),
+	FOREIGN KEY (artistName) REFERENCES Artist(artistName)
+);
+
+
+CREATE TABLE Song(
+	songTitle varchar(25),
+	duration NUMERIC(4,2),
+	artistName varchar(25),
+	albumTitle varchar(25),
+	PRIMARY KEY (songTitle),
+	FOREIGN KEY (artistName) REFERENCES Artist(artistName),
+	FOREIGN KEY (albumTitle) REFERENCES Album(albumTitle)
+);
+
+CREATE TABLE Playlist(
+	playlistName varchar(25),
+	songName varchar(25),
+	FOREIGN KEY (songName) REFERENCES Song(songTitle),
+	FOREIGN KEY (playlistName) REFERENCES UserPlaylists(playlistName)
+);
+
+
+CREATE TABLE User(
+	userName varchar(25) NOT NULL,
+	userAge NUMERIC(2,0),
+	recentlyListened varchar(25),
+	PRIMARY KEY (userName),
+	FOREIGN KEY (recentlyListened) REFERENCES UserPlaylists(playlistName)
+);
+
+
+CREATE TABLE Friends(
+	userName varchar(25),
+	friendName varchar(25),
+	FOREIGN KEY (friendName) REFERENCES User(userName),
+	FOREIGN KEY (userName) REFERENCES User(userName)
+);
+
+
+CREATE TABLE UserPlaylists(
+	playlistName varchar(25),
+	userName varchar(25),
+	PRIMARY KEY (playListName),
+	FOREIGN KEY (userName) REFERENCES User(userName)
+);
+
+
+-- Alter Tables Additions:
+
+ALTER TABLE User ADD favoriteSong varchar(25);
+
+Alter table User ADD Foreign Key(favoriteSong) references Song(songTitle);
+
+Alter table UserPlaylists ADD description varchar(100);
+
+Alter table User Drop userAge;
+
+
+--USE TRY CATCHES

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/style.css' %}"/>
+</head>
+<body>
+<form method="POST" class="post-form" action="/updateSong/{{song.id}}">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Update Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Song Title:</label>
+    <div class="col-sm-4">
+        <input type="text" name="songTitle" id="id_songTitle" required maxlength="25" value="{{ song.songTitle }}"/>
+    </div>
+  </div>
+     <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Duration:</label>
+    <div class="col-sm-4">
+        <input type="text" name="duration" id="id_duration" required maxlength="25" value="{{ song.duration }}"/>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Song Title:</label>
+    <div class="col-sm-4">
+        <input type="text" name="artistName" id="id_artistName" required maxlength="25" value="{{ song.artistName }}"/>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Song Title:</label>
+    <div class="col-sm-4">
+        <input type="text" name="albumTitle" id="id_albumTitle" required maxlength="25" value="{{ song.albumTitle }}"/>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-success">Update</button>
+    </div>
+  </div>
+    </div>
+</form>
+</body>
+</html>
